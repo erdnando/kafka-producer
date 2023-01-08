@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: erdnando
+Build-Jdk: 17.0.3.1
+Implementation-Title: spring-kafka-producer
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.asb.example
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/spring-kafka-producer
+Created-By: Maven Integration for Eclipse
+
