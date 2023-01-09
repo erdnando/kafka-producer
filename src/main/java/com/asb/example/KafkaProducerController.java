@@ -26,6 +26,7 @@ public class KafkaProducerController {
 	@PostMapping("/produce")
 	public ResponseEntity<String> postModelToKafka(@RequestBody Employee emp)
 			throws InterruptedException, ExecutionException {
+		
 		ListenableFuture<SendResult<String, String>> result = kafkaTemplate.send("my-topic", gson.toJson(emp));
 		return new ResponseEntity<>(result.get().getProducerRecord().value(), HttpStatus.OK);
 	}
