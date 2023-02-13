@@ -24,10 +24,12 @@ public class KafkaProducerController {
 	private Gson gson;
 
 	@PostMapping("/produce")
-	public ResponseEntity<String> postModelToKafka(@RequestBody Employee emp)
+	public ResponseEntity<String> postModelToKafka(@RequestBody Message m)
 			throws InterruptedException, ExecutionException {
 		
-		ListenableFuture<SendResult<String, String>> result = kafkaTemplate.send("my-topic", gson.toJson(emp));
-		return new ResponseEntity<>(result.get().getProducerRecord().value(), HttpStatus.OK);
+		//ListenableFuture<SendResult<String, String>> result = kafkaTemplate.send("my-topic", gson.toJson(emp));
+		ListenableFuture<SendResult<String, String>> result = kafkaTemplate.send(m.getTopic(), gson.toJson(m));
+		//return new ResponseEntity<>(result.get().getProducerRecord().value(), HttpStatus.OK);
+		return new ResponseEntity<>("Mensaje encolado...."+result.get().getProducerRecord().toString(), HttpStatus.OK);
 	}
 }

@@ -1,4 +1,3 @@
+com/asb/example/KafkaConfig.class
 com/asb/example/SpringKafkaExampleApplication.class
 com/asb/example/KafkaProducerController.class
-com/asb/example/Employee.class
-com/asb/example/KafkaConfig.class
