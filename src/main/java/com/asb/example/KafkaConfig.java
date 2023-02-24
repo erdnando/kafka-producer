@@ -17,14 +17,26 @@ public class KafkaConfig {
 	@Bean
 	ProducerFactory<String, String> producerFactory() {
 		Map<String, Object> config = new HashMap<>();
-		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "my-cluster-kafka-bootstrap.amq-streams.svc:9092");
+		  
+		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "my-cluster-kafka-bootstrap-amq-streams.apps.claro.co:443");
+		//config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "my-cluster-kafka-bootstrap.amq-streams.svc:9091");
 		config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		config.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 70000);
+		/*config.put("enable.auto.commit", "false");
+		config.put("auto.offset.reset", "earliest");
+		config.put("security.protocol", "SASL_PLAINTEXT");
+		config.put("basic.auth.credentials.source", "USER_INFO");
+		config.put("basic.auth.user.info", "${user}:${pass}");
+		config.put("sasl.kerberos.service.name", "kafka");
+		config.put("auto.register.schemas", "false");
+		config.put("schema.registry.url", "${https://your_url}");
+		config.put("schema.registry.ssl.truststore.location", "client_truststore.jks");
+		config.put("schema.registry.ssl.truststore.password", "${password}");*/
+		
 		return new DefaultKafkaProducerFactory<String, String>(config);
 		
-		//my-cluster-kafka-bootstrap.amq-streams.svc.cluster.local
-		//my-cluster-kafka-listener1-0-amq-streams.apps-crc.testing:9094
-		//my-cluster-kafka-listener1-bootstrap-amq-streams.apps-crc.testing
+	
 	}
 
 	@Bean
