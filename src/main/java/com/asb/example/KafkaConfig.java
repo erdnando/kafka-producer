@@ -17,9 +17,9 @@ public class KafkaConfig {
 	@Bean
 	ProducerFactory<String, String> producerFactory() {
 		Map<String, Object> config = new HashMap<>();
-		  
+		  //Para el entrorno onpremise utilizar el puerto 9092 
 		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "my-cluster-kafka-bootstrap.amq-streams.svc:9092");//ok
-		//config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "my-cluster-kafka-external-bootstrap.amq-streams.svc:9094");
+		
 		
 		config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
