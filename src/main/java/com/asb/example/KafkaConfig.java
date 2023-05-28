@@ -23,9 +23,9 @@ public class KafkaConfig {
 		config.put(ProducerConfig.ACKS_CONFIG, "all");
 		config.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
 		config.put(ProducerConfig.RETRIES_CONFIG, Integer.toString(Integer.MAX_VALUE));
+		
 		config.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, "5");
 		config.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, "snappy");
-		
 		config.put(ProducerConfig.BATCH_SIZE_CONFIG, Integer.toString(32*1024));
 		config.put(ProducerConfig.LINGER_MS_CONFIG, "20");
 		
