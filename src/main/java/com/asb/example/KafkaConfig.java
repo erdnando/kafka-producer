@@ -20,9 +20,14 @@ public class KafkaConfig {
 		  //Para el entrorno onpremise utilizar el puerto 9092 
 		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "my-cluster-kafka-bootstrap.amq-streams.svc:9092");//ok
 		
+		config.put(ProducerConfig.ACKS_CONFIG, "all");
+		config.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
+		config.put(ProducerConfig.RETRIES_CONFIG, Integer.toString(Integer.MAX_VALUE));
+		config.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, "5");
 		
 		config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
 		config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		
 		
 		
 		return new DefaultKafkaProducerFactory<String, String>(config);
